@@ -1,0 +1,40 @@
+@model IEnumerable<BookstoreApp.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Checkout Summary";
+}
+
+<h1>Checkout Summary</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Book.Title</td>
+                <td>@item.Quantity</td>
+                <td>$@item.Book.Price</td>
+                <td>$@(item.Book.Price * item.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right"><strong>Total Amount:</strong></td>
+            <td><strong>$@ViewBag.TotalAmount</strong></td>
+        </tr>
+    </tfoot>
+</table>
+
+<form method="post" action="/Order/ProcessOrder">
+    <button type="submit" class="btn btn-success">Confirm and Place Order</button>
+    <a href="/Cart" class="btn btn-secondary">Back to Cart</a>
+</form>
