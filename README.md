@@ -29,25 +29,30 @@ The application adopts a **Hybrid Architecture**, delegating specific workflows 
 
 ```mermaid
 graph TD
-    User([👤 User / Client]) --> Router[ASP.NET Core Routing]
+    User["👤 User / Client"] --> Router["ASP.NET Core Routing"]
     
     %% MVC Flow
-    Router -->|Browse Catalog & Checkout| MVC[MVC Architecture]
-    MVC --> BooksCtrl[Books Controller]
-    MVC --> OrderCtrl[Order Controller]
+    Router -->|"Browse Catalog & Checkout"| MVC["MVC Architecture"]
+    MVC --> BooksCtrl["Books Controller"]
+    MVC --> OrderCtrl["Order Controller"]
     
     %% Razor Pages Flow
-    Router -->|Admin & Account Mgmt| Razor[Razor Pages]
-    Razor --> BookMgmt[Book Management Pages]
-    Razor --> Cart[Shopping Cart Pages]
-    Razor --> Auth[Login / Register]
+    Router -->|"Admin & Account Mgmt"| Razor["Razor Pages"]
+    Razor --> BookMgmt["Book Management Pages"]
+    Razor --> Cart["Shopping Cart Pages"]
+    Razor --> Auth["Login / Register"]
     
     %% Shared Services
-    BooksCtrl & OrderCtrl & BookMgmt & Cart & Auth --> Repositories[(Generic Repository)]
-    Repositories --> EFCore[(Entity Framework In-Memory DB)]
+    BooksCtrl --> Repositories[("Generic Repository")]
+    OrderCtrl --> Repositories
+    BookMgmt --> Repositories
+    Cart --> Repositories
+    Auth --> Repositories
+    
+    Repositories --> EFCore[("Entity Framework In-Memory DB")]
     
     %% Filters
-    Auth -.-> Filters[Auth & Exception Filters]
+    Auth -.-> Filters["Auth & Exception Filters"]
 ```
 
 ---
