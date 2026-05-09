@@ -11,6 +11,9 @@
     <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" />
     <img src="https://img.shields.io/badge/Architecture-Hybrid_MVC_&_Razor-blue?style=for-the-badge" alt="Architecture" />
   </p>
+  <p>
+    <a href="https://github.com/DibyaGit/AspNetCore-Bookstore-MVC-Razor/blob/master/LICENSE"><img src="https://img.shields.io/github/license/DibyaGit/AspNetCore-Bookstore-MVC-Razor.svg" alt="License" /></a>
+  </p>
 </div>
 
 <hr />
